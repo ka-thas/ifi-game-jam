@@ -1,12 +1,16 @@
+import pygame
+
 from .options import *
 from .Projectile import Projectile
+from .assets import *
 
 class Player:
     def __init__(self):
         self.x = 540
         self.y = 640
-        self.size = (50, 50)
+        self.size = (40, 50)
         self.color = BLUE
+        self.image = pygame.transform.scale(ROCKET_IMAGE, self.size)
         self.speed = PLAYER_SPEED
         self.last_shot_time = 0
 
@@ -17,4 +21,4 @@ class Player:
         return projectile
 
     def draw(self, screen):
-        pygame.draw.rect(screen, BLUE, (self.x, self.y, self.size[0], self.size[1]))
+        screen.blit(self.image, (self.x, self.y))

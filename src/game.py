@@ -30,7 +30,7 @@ def run():
     score = 0
 
     def draw_frame():
-        screen.fill(WHITE)
+        screen.blit(BACKGROUND_IMAGE, (0, 0))
         pygame.draw.rect(screen, BLACK, (0, 690, WIDTH, 30))  # Ground
         p1.draw(screen)
         for projectile in projectiles:
@@ -40,9 +40,8 @@ def run():
             boulder.draw(screen)
             
         # Draw score and lives
-        font = pygame.font.SysFont(None, 36)
-        score_text = font.render(f"Score: {score}", True, BLACK)
-        lives_text = font.render(f"♥"*p1.lives, True, BLACK)
+        score_text = FONT_TYPE.render(f'Score: {score}', False, FONT_COLOR)
+        lives_text = FONT_TYPE.render(f"♥"*p1.lives, True, FONT_COLOR)
         screen.blit(score_text, (10, 10))
         screen.blit(lives_text, (WIDTH - 120, 10))
 
@@ -94,6 +93,14 @@ def run():
                 boulders.remove(boulder)
                 p1.lives -= 1
                 if p1.lives <= 0:
+                    # Game over sequence
+                    boulders.clear()
+                    projectiles.clear()
+                    draw_frame()
+                    game_over_text = FONT_TYPE.render("GAME OVER", True, RED)
+                    screen.blit(game_over_text, (WIDTH // 2 - game_over_text.get_width() // 2, HEIGHT // 2 - game_over_text.get_height() // 2))
+                    pygame.display.flip()
+                    time.sleep(2)
                     running = False
 
         # Update display

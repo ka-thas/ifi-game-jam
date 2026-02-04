@@ -1,3 +1,13 @@
-# IFI Game Jam
+> Dette er en pygame boilerplate
+>
+> Dere kan tenke på dette som kodeskjelettet eller prekoden for pygame
 
-[gamejam.kathas.no](https://gamejam.kathas.no)
+# Navn på spillet
+
+Gruppemedlemmer:
+
+- 
+- 
+- 
+
+## Beskrivelse av spillet
